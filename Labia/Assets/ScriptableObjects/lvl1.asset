@@ -18,3 +18,5 @@ MonoBehaviour:
   _choice1CheckIfCorrect1: 1
   _choice1CheckIfCorrect2: 0
   _choice1CheckIfCorrect3: 0
+  _lvlVideo: {fileID: 0}
+  _lvlImage: {fileID: 21300000, guid: b6c2f78beac2f614285de9b0882eeb8c, type: 3}
