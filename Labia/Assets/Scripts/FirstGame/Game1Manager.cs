@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Video;
+using UnityEngine.UI;
 
 public class Game1Manager : MonoBehaviour
 {
@@ -8,84 +10,126 @@ public class Game1Manager : MonoBehaviour
 
     [SerializeField] ScriptableGame[] _gameLevel;
 
-    ScriptableGame _positionInLevel;
-    AudioClip _audioSource1;
-    AudioClip _audioSource2;
-    AudioClip _audioSource3;
+    [SerializeField] VideoPlayer _videoPlayer;
+    [SerializeField] RawImage _display;
+    [SerializeField] RenderTexture _renderTexture;
+
+    ScriptableGame positionInLevel;
+    AudioClip audioSource1;
+    AudioClip audioSource2;
+    AudioClip audioSource3;
+
+    [SerializeField] GameObject Option1;
+    [SerializeField] GameObject Option2;
+    [SerializeField] GameObject Option3;
 
     [SerializeField] int _positionInGameLevel;
 
-    bool boxIsChecked1 = false;
-    bool boxIsChecked2 = false;
-    bool boxIsChecked3 = false;
+    Button[] option1;
+    Button[] option2;
+    Button[] option3;
+
+    [Range(0, 1)]
+    [SerializeField] float _buttonTransparancy;
+
     private void Awake()
     {
         UpdateUI();
-
+         option1 = Option1.GetComponentsInChildren<Button>();
+        option2  = Option2.GetComponentsInChildren<Button>();
+         option3 = Option3.GetComponentsInChildren<Button>();
     }
     
     void UpdateUI()
     {
-      _positionInLevel = _gameLevel[_positionInGameLevel];
+      positionInLevel = _gameLevel[_positionInGameLevel];
 
-        _audioSource1 = _positionInLevel.AudioButton1;
-        _audioSource2 = _positionInLevel.AudioButton2;
-        _audioSource3 = _positionInLevel.AudioButton3;
+        audioSource1 = positionInLevel.AudioButton1;
+        audioSource2 = positionInLevel.AudioButton2;
+        audioSource3 = positionInLevel.AudioButton3;
 
-        _uiManager.InfoOnScrene(_audioSource1, _audioSource2, _audioSource3);
+        _uiManager.InfoOnScrene(audioSource1, audioSource2, audioSource3);
+
+        if(positionInLevel.LvlVideo != null)
+        {
+            _display.texture = _renderTexture;
+            _videoPlayer.clip = positionInLevel.LvlVideo;
+        }
+        else
+        {
+            _videoPlayer.clip = null;
+            _display.texture = positionInLevel.LvlImage.texture;
+        }
+        
 
 
     }
 
     public void CheckIfCorrect()
     {
-        if(_gameLevel[_positionInGameLevel].Choice1CheckIfCorrect1 == true && boxIsChecked1 == true)
+      
+        if (_gameLevel[_positionInGameLevel].Choice1CheckIfCorrect1 == true && _uiManager.BoxIsChecked1 == true)
         {
-            _positionInGameLevel++;
-            UpdateUI();
+            NextLevel();
         }
-        if (_gameLevel[_positionInGameLevel].Choice1CheckIfCorrect2 == true && boxIsChecked2 == true)
+      else if(_gameLevel[_positionInGameLevel].Choice1CheckIfCorrect1 == false && _uiManager.BoxIsChecked1 == true)
         {
-            _positionInGameLevel++;
-            UpdateUI();
+           
+            foreach (var item in option1)
+            {
+                item.image.color = new Color(255, 255, 255, _buttonTransparancy);
+
+            }
         }
-        if (_gameLevel[_positionInGameLevel].Choice1CheckIfCorrect3 == true && boxIsChecked3 == true)
+       
+        if (_gameLevel[_positionInGameLevel].Choice1CheckIfCorrect2 == true && _uiManager.BoxIsChecked2 == true)
         {
-            _positionInGameLevel++;
-            UpdateUI();
+            NextLevel();
+        }
+       else if (_gameLevel[_positionInGameLevel].Choice1CheckIfCorrect2 == false && _uiManager.BoxIsChecked2 == true)
+        {
+           
+          
+            foreach (var item in option2)
+            {
+                item.image.color = new Color(255, 255, 255, _buttonTransparancy);
+
+            }
+        }
+        if (_gameLevel[_positionInGameLevel].Choice1CheckIfCorrect3 == true && _uiManager.BoxIsChecked3 == true)
+        {
+            NextLevel();
+        }
+        else if (_gameLevel[_positionInGameLevel].Choice1CheckIfCorrect3 == false && _uiManager.BoxIsChecked3 == true)
+        {
+
+
+            foreach (var item in option3)
+            {
+                item.image.color = new Color(255, 255, 255, _buttonTransparancy);
+
+            }
         }
     }
 
-    public void CheckBox1Imp()
+    void NextLevel()
     {
-       CheckBox1();
-    }
-    public void CheckBox2Imp()
-    {
-        CheckBox2();
-    }
-    public void CheckBox3Imp()
-    {
-        CheckBox3();
+        _positionInGameLevel++;
+        UpdateUI();
+
+        foreach (var item in option1)
+        {
+            item.image.color = new Color(255, 255, 255, 1);
+        }
+        foreach (var item in option2)
+        {
+            item.image.color = new Color(255, 255, 255, 1);
+        }
+        foreach (var item in option3)
+        {
+            item.image.color = new Color(255, 255, 255, 1);
+        }
     }
 
-    void CheckBox1()
-    {
-            boxIsChecked1 = true;
-        boxIsChecked2 = false;
-        boxIsChecked3 = false;
-    }
-    void CheckBox2()
-    {    
-            boxIsChecked2 = true;
-        boxIsChecked1 = false;
-        boxIsChecked3 = false;
-
-    }
-     void CheckBox3()
-    {      
-            boxIsChecked3 = true;
-        boxIsChecked2 = false;
-        boxIsChecked1 = false;
-    }
+  
 }

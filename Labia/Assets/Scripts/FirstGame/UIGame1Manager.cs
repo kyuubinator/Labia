@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIGame1Manager : MonoBehaviour
 {
@@ -11,6 +12,15 @@ public class UIGame1Manager : MonoBehaviour
     AudioSource newAudio1;
     AudioSource newAudio2;
     AudioSource newAudio3;
+
+    bool boxIsChecked1 = false;
+    bool boxIsChecked2 = false;
+    bool boxIsChecked3 = false;
+
+    public bool BoxIsChecked1 { get => boxIsChecked1; set => boxIsChecked1 = value; }
+    public bool BoxIsChecked2 { get => boxIsChecked2; set => boxIsChecked2 = value; }
+    public bool BoxIsChecked3 { get => boxIsChecked3; set => boxIsChecked3 = value; }
+
     private void Awake()
     {
          newAudio1 = _button1.GetComponent<AudioSource>();
@@ -41,5 +51,27 @@ public class UIGame1Manager : MonoBehaviour
         newAudio3.Play();
         newAudio2.Stop();
         newAudio1.Stop();
+    }
+
+   public void CheckBox1()
+    {
+        BoxIsChecked1 = true;
+        BoxIsChecked2 = false;
+        BoxIsChecked3 = false;
+
+
+    }
+    public void CheckBox2()
+    {
+        BoxIsChecked2 = true;
+        BoxIsChecked1 = false;
+        BoxIsChecked3 = false;
+
+    }
+    public void CheckBox3()
+    {
+        BoxIsChecked3 = true;
+        BoxIsChecked2 = false;
+        BoxIsChecked1 = false;
     }
 }
