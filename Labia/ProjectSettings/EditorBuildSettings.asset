@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Miguel.unity
     guid: 7e5161c732f9e68499cbb0679236eea2
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 0aa4aa0b8ca0f334aab5f5e1e27a89d6, type: 2}
+    com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: a9f1a01ad5411e9489a32072448aeb1f, type: 2}
+    com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 4d07b79043a62f746a5e8e541d0f8a6e, type: 2}
