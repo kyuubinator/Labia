@@ -1,0 +1,381 @@
+fileFormatVersion: 2
+guid: c73d95176fb795842b5cb7efbe14a0d3
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Untitled-5_63
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 642
+        width: 253
+        height: 253
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6bc46ebc0ef1634caa750f4aff801ad
+      internalID: -901853483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Untitled-5_64
+      rect:
+        serializedVersion: 2
+        x: 518
+        y: 643
+        width: 251
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c431a8940a19e3468ec4b13a65212af
+      internalID: 467591518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Untitled-5_115
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 585
+        height: 251
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 574edb0687a309a42931d9566258f8f2
+      internalID: 1338683293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Untitled-5_116
+      rect:
+        serializedVersion: 2
+        x: 878
+        y: 0
+        width: 586
+        height: 251
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ea50d325b06aeb448950b19d0bf9026
+      internalID: -2051663820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Untitled-5_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1254
+        width: 1992
+        height: 1208
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52e13e43124603c4e9ba937a45cbade2
+      internalID: 1301926162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Untitled-5_46: -1450117377
+      Untitled-5_33: -1828290376
+      Untitled-5_15: -1799826877
+      Untitled-5_81: 211302583
+      Untitled-5_105: 1594153363
+      Untitled-5_25: 424326927
+      Untitled-5_71: -603850999
+      Untitled-5_50: -1962193286
+      Untitled-5_69: -1885476295
+      Untitled-5_111: 1411120851
+      Untitled-5_24: -1509723736
+      Untitled-5_67: -108850517
+      Untitled-5_5: 869305338
+      Untitled-5_86: 510704659
+      Untitled-5_28: 1329980334
+      Untitled-5_72: -1155972232
+      Untitled-5_51: 1093006213
+      Untitled-5_95: 772067800
+      Untitled-5_101: 628088888
+      Untitled-5_47: 1780803460
+      Untitled-5_26: 1234653474
+      Untitled-5_94: -469825021
+      Untitled-5_104: -148492736
+      Untitled-5_82: -1920819857
+      Untitled-5_59: 1915449606
+      Untitled-5_31: 1219216839
+      Untitled-5_97: 1407414132
+      Untitled-5_109: -424741425
+      Untitled-5_8: -1892964540
+      Untitled-5_60: -1480657409
+      Untitled-5_34: 46228207
+      Untitled-5_73: 1046931395
+      Untitled-5_2: -135633456
+      Untitled-5_39: 862231635
+      Untitled-5_12: 1987255
+      Untitled-5_27: 1816588376
+      Untitled-5_87: -1887703022
+      Untitled-5_7: -1385836058
+      Untitled-5_108: 407313209
+      Untitled-5_20: -1350005756
+      Untitled-5_1: 326642110
+      Untitled-5_48: 1257531012
+      Untitled-5_49: -2095048557
+      Untitled-5_61: 114827509
+      Untitled-5_18: 964109581
+      Untitled-5_66: -1411180762
+      Untitled-5_6: 584307970
+      Untitled-5_40: -69729296
+      Untitled-5_76: -1866182662
+      Untitled-5_91: 503529345
+      Untitled-5_36: -989394555
+      Untitled-5_37: 413883329
+      Untitled-5_11: 1526131353
+      Untitled-5_102: 599974866
+      Untitled-5_53: -1241094852
+      Untitled-5_89: 1112433018
+      Untitled-5_56: 643567684
+      Untitled-5_78: -78278961
+      Untitled-5_57: -303116380
+      Untitled-5_98: 1580912569
+      Untitled-5_0: 1301926162
+      Untitled-5_80: 1638494710
+      Untitled-5_14: -1432157620
+      Untitled-5_16: 991524914
+      Untitled-5_115: 1338683293
+      Untitled-5_52: 1811598416
+      Untitled-5_75: 1234843420
+      Untitled-5_42: -1211942354
+      Untitled-5_35: 1735569766
+      Untitled-5_4: 231320224
+      Untitled-5_3: 1715011905
+      Untitled-5_63: -901853483
+      Untitled-5_65: 445012234
+      Untitled-5_79: 1988379824
+      Untitled-5_116: -2051663820
+      Untitled-5_43: -1555359760
+      Untitled-5_64: 467591518
+      Untitled-5_74: -1046301769
+      Untitled-5_90: 1406226795
+      Untitled-5_106: -987462888
+      Untitled-5_30: -224607400
+      Untitled-5_96: -1218313339
+      Untitled-5_103: 616802313
+      Untitled-5_68: -1618106619
+      Untitled-5_44: -439169018
+      Untitled-5_32: -2097475374
+      Untitled-5_29: -1012093865
+      Untitled-5_41: -1185725228
+      Untitled-5_10: 1408765509
+      Untitled-5_77: -1301477467
+      Untitled-5_13: -1535111386
+      Untitled-5_114: -673496724
+      Untitled-5_9: -1090907385
+      Untitled-5_93: 249634651
+      Untitled-5_23: 1074606942
+      Untitled-5_38: 1569389447
+      Untitled-5_17: -1908120540
+      Untitled-5_22: 389575900
+      Untitled-5_54: 219545712
+      Untitled-5_58: -2120660987
+      Untitled-5_100: -934279165
+      Untitled-5_70: 328656117
+      Untitled-5_113: 99900509
+      Untitled-5_19: 4586222
+      Untitled-5_92: 515296248
+      Untitled-5_107: 2006760865
+      Untitled-5_62: 1787255514
+      Untitled-5_88: -406828296
+      Untitled-5_110: -484766112
+      Untitled-5_83: 1351546991
+      Untitled-5_99: 124775832
+      Untitled-5_55: -491830532
+      Untitled-5_85: -1378751291
+      Untitled-5_45: 1271260563
+      Untitled-5_21: 1274906060
+      Untitled-5_112: -1213317836
+      Untitled-5_84: -1375073667
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
