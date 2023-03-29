@@ -1,3 +1,5 @@
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Serialization;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,9 +12,9 @@ public class UiManagerMain : MonoBehaviour
     [SerializeField] private AudioSource tutorial;
     [SerializeField] private GameObject[] gameSelected;
 
-    bool mainbool;
-    bool pausebool;
-    bool gameChoiceBool;
+    [SerializeField] private Animator animMain;
+    [SerializeField] private Animator animPause;
+    [SerializeField] private Animator animGame;
 
     public void MainMenuSwap(bool value)
     {
@@ -23,10 +25,22 @@ public class UiManagerMain : MonoBehaviour
     public void PauseMenuSwap(bool value)
     {
         pauseMenu.SetActive(value);
+        if (value) 
+        {
+            animMain.SetTrigger("ClickPause");
+            animGame.SetTrigger("ClickPause");
+        }
     }
 
     public void GameChoiceMenuSwap(bool value)
     {
+        StartCoroutine(DelayGameChoice(value));
+    }
+
+    IEnumerator DelayGameChoice(bool value)
+    {
+        animMain.SetTrigger("ClickPlay");
+        yield return new WaitForSeconds(0.5f);
         DeactivateMenus();
         gameChoiceMenu.SetActive(value);
     }
@@ -34,6 +48,8 @@ public class UiManagerMain : MonoBehaviour
     public void TutorialButton()
     {
         tutorial.Play();
+        animMain.SetTrigger("ClickTutorial");
+        animGame.SetTrigger("ClickTutorial");
     }
 
     public void DeactivateMenus()
@@ -45,6 +61,24 @@ public class UiManagerMain : MonoBehaviour
 
     public void GameSelected(int value)
     {
+        StartCoroutine(DelayGameMode(value));
+    }
+
+    IEnumerator DelayGameMode(int value)
+    {
+        yield return new WaitForSeconds(0.5f);
         gameSelected[value].SetActive(true);
+    }
+
+    public void GameChoice1(bool value)
+    {
+        if (value)
+        {
+            animGame.SetTrigger("ClickGame1");
+        }
+        else
+        {
+            animGame.SetTrigger("ClickGame2");
+        }
     }
 }
