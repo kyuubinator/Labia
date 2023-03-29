@@ -32,6 +32,13 @@ public class Game1Manager : MonoBehaviour
     [Range(0, 1)]
     [SerializeField] float _buttonTransparancy;
 
+    [SerializeField] private AudioClip[] buttonClickClip;
+    [SerializeField] private AudioClip[] openPauseMenu;
+    [SerializeField] private AudioClip[] backGroundMusic;
+
+    [SerializeField] Slider sliderVFXVolume;
+    [SerializeField] Slider sliderMusicVolume;
+
     private void Awake()
     {
         UpdateUI();
@@ -39,7 +46,22 @@ public class Game1Manager : MonoBehaviour
         option2  = Option2.GetComponentsInChildren<Button>();
          option3 = Option3.GetComponentsInChildren<Button>();
     }
-    
+    private void Start()
+    {
+        sliderVFXVolume.value = SoundManager.instance.SliderVFXVolume.value;
+        sliderMusicVolume.value = SoundManager.instance.SliderMusicVolume.value;
+        SoundManager.instance.SetVolumeSliders(sliderMusicVolume, sliderVFXVolume);
+        StartCoroutine(PlayBackGroundMusic());
+    }
+    IEnumerator PlayBackGroundMusic()
+    {
+        AudioClip musicToPlay = backGroundMusic[Random.Range(0, backGroundMusic.Length)];
+        SoundManager.instance.PlayBackGroundMusic(musicToPlay);
+        yield return new WaitForSeconds(musicToPlay.length);
+        StartCoroutine(PlayBackGroundMusic());
+
+    }
+
     void UpdateUI()
     {
       positionInLevel = _gameLevel[_positionInGameLevel];

@@ -778,6 +778,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6695388263226524288, guid: 7e40e66012e9d864eabb434355a5f64e, type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6695388263226524288, guid: 7e40e66012e9d864eabb434355a5f64e, type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].cycleCount
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6695388263226524289, guid: 7e40e66012e9d864eabb434355a5f64e, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -825,6 +833,10 @@ PrefabInstance:
     - target: {fileID: 6695388263226524290, guid: 7e40e66012e9d864eabb434355a5f64e, type: 3}
       propertyPath: m_Name
       value: Particle System
+      objectReference: {fileID: 0}
+    - target: {fileID: 6695388263226524290, guid: 7e40e66012e9d864eabb434355a5f64e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e40e66012e9d864eabb434355a5f64e, type: 3}
