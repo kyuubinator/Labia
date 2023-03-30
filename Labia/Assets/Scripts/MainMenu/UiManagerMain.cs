@@ -27,9 +27,12 @@ public class UiManagerMain : MonoBehaviour
 
     private void Start()
     {
-        //ISTO TA MAl
-        sliderVFXVolume.value = SoundManager.instance.SliderVFXVolume.value;
-        sliderMusicVolume.value = SoundManager.instance.SliderMusicVolume.value;
+        if(SoundManager.instance.SliderMusicVolume)
+        {
+            sliderVFXVolume.value = SoundManager.instance.SliderVFXVolume.value;
+            sliderMusicVolume.value = SoundManager.instance.SliderMusicVolume.value;
+
+        }
         SoundManager.instance.PlayBackGroundMusic(backGroundMusic);
         SoundManager.instance.SetVolumeSliders(sliderMusicVolume, sliderVFXVolume);
     }
@@ -38,7 +41,7 @@ public class UiManagerMain : MonoBehaviour
     {
         DeactivateMenus();
         mainMenu.SetActive(value);
-        //SoundManager.instance.PlayVFXSound(buttonClickClip[Random.Range(0, buttonClickClip.Length)]);
+        SoundManager.instance.PlayVFXSound(buttonClickClip[Random.Range(0, buttonClickClip.Length)]);
 
     }
 
@@ -75,7 +78,7 @@ public class UiManagerMain : MonoBehaviour
     IEnumerator DelayGameChoice(bool value)
     {
         animMain.SetTrigger("ClickPlay");
-        //SoundManager.instance.PlayVFXSound(buttonClickClip[Random.Range(0, buttonClickClip.Length)]);
+        SoundManager.instance.PlayVFXSound(buttonClickClip[Random.Range(0, buttonClickClip.Length)]);
         yield return new WaitForSeconds(0.5f);
         DeactivateMenus();
         gameChoiceMenu.SetActive(value);
@@ -83,8 +86,8 @@ public class UiManagerMain : MonoBehaviour
 
     public void TutorialButton()
     {
-        //SoundManager.instance.PlayVFXSound(buttonClickClip[Random.Range(0, buttonClickClip.Length)]);
-        ////tutorial.Play();
+        SoundManager.instance.PlayVFXSound(buttonClickClip[Random.Range(0, buttonClickClip.Length)]);
+        //tutorial.Play();
         animMain.SetTrigger("ClickTutorial");
         animGame.SetTrigger("ClickTutorial");
     }
@@ -103,7 +106,7 @@ public class UiManagerMain : MonoBehaviour
 
     IEnumerator DelayGameMode(int value)
     {
-        //SoundManager.instance.PlayVFXSound(buttonClickClip[Random.Range(0, buttonClickClip.Length)]);
+        SoundManager.instance.PlayVFXSound(buttonClickClip[Random.Range(0, buttonClickClip.Length)]);
         yield return new WaitForSeconds(0.5f);
         gameSelected[value].SetActive(true);
     }

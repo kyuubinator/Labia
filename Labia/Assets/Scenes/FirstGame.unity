@@ -2509,6 +2509,14 @@ MonoBehaviour:
   Option3: {fileID: 84228240}
   _positionInGameLevel: 0
   _buttonTransparancy: 0.5
+  buttonClickClip: []
+  openPauseMenu: []
+  backGroundMusic:
+  - {fileID: 8300000, guid: 1e0fd72f2cda0f04e97932ed63e49c52, type: 3}
+  - {fileID: 8300000, guid: c00bee75815884a48a7e64cea38c59d0, type: 3}
+  - {fileID: 8300000, guid: 2f9910a26ebc3644d947219130d7bb56, type: 3}
+  sliderVFXVolume: {fileID: 0}
+  sliderMusicVolume: {fileID: 0}
 --- !u!4 &1980914300
 Transform:
   m_ObjectHideFlags: 0
@@ -2531,6 +2539,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6695388263226524288, guid: 7e40e66012e9d864eabb434355a5f64e, type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6695388263226524289, guid: 7e40e66012e9d864eabb434355a5f64e, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -2578,6 +2590,10 @@ PrefabInstance:
     - target: {fileID: 6695388263226524290, guid: 7e40e66012e9d864eabb434355a5f64e, type: 3}
       propertyPath: m_Name
       value: Confetti
+      objectReference: {fileID: 0}
+    - target: {fileID: 6695388263226524290, guid: 7e40e66012e9d864eabb434355a5f64e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e40e66012e9d864eabb434355a5f64e, type: 3}
@@ -2682,6 +2698,53 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &2093392959
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2093392961}
+  - component: {fileID: 2093392960}
+  m_Layer: 0
+  m_Name: teste
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2093392960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2093392959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d17b176b6472b4f42850e87ed0b3ac60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSourcePrefab: {fileID: 1155556543345598159, guid: aa0daf7cf5a185f49bc3b9fadae1436e, type: 3}
+  sliderVFXVolume: {fileID: 0}
+  sliderMusicVolume: {fileID: 0}
+--- !u!4 &2093392961
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2093392959}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 683.9111, y: 256.08432, z: -1.7144384}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2118295401
 GameObject:
   m_ObjectHideFlags: 0

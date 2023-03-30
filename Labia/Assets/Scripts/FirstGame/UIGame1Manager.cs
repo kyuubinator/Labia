@@ -8,11 +8,15 @@ public class UIGame1Manager : MonoBehaviour
     [SerializeField] GameObject _button1;
     [SerializeField] GameObject _button2;
     [SerializeField] GameObject _button3;
+        [Header("Som")]
 
     AudioSource newAudio1;
     AudioSource newAudio2;
     AudioSource newAudio3;
 
+    AudioClip audioClip1;
+    AudioClip audioClip2;
+    AudioClip audioClip3;
     bool boxIsChecked1 = false;
     bool boxIsChecked2 = false;
     bool boxIsChecked3 = false;
@@ -30,27 +34,35 @@ public class UIGame1Manager : MonoBehaviour
     public void InfoOnScrene(AudioClip audio1, AudioClip audio2, AudioClip audio3)
     {    
         newAudio1.clip = audio1;     
-        newAudio2.clip = audio2;       
+        audioClip1 = audio1;     
+        newAudio2.clip = audio2;
+        audioClip2 = audio2;       
         newAudio3.clip = audio3;
+        audioClip3 = audio3;
     }
 
     public void PlaySound1()
     {
-        newAudio1.Play();
-        newAudio2.Stop();
-        newAudio3.Stop();
+        SoundManager.instance.PlayAudioClipSounds(audioClip1);
+        //newAudio1.Play();
+        //newAudio2.Stop();
+        //newAudio3.Stop();
     }
     public void PlaySound2()
     {
-        newAudio2.Play();
-        newAudio1.Stop();
-        newAudio3.Stop();
+        SoundManager.instance.PlayAudioClipSounds(audioClip2);
+
+        //newAudio2.Play();
+        //newAudio1.Stop();
+        //newAudio3.Stop();
     }
     public void PlaySound3()
     {
-        newAudio3.Play();
-        newAudio2.Stop();
-        newAudio1.Stop();
+        SoundManager.instance.PlayAudioClipSounds(audioClip3);
+
+        //newAudio3.Play();
+        //newAudio2.Stop();
+        //newAudio1.Stop();
     }
 
    public void CheckBox1()

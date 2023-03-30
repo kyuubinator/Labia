@@ -43,15 +43,12 @@ public class Game1Manager : MonoBehaviour
     {
         UpdateUI();
          option1 = Option1.GetComponentsInChildren<Button>();
-        option2  = Option2.GetComponentsInChildren<Button>();
+         option2 = Option2.GetComponentsInChildren<Button>();
          option3 = Option3.GetComponentsInChildren<Button>();
     }
     private void Start()
     {
-        sliderVFXVolume.value = SoundManager.instance.SliderVFXVolume.value;
-        sliderMusicVolume.value = SoundManager.instance.SliderMusicVolume.value;
-        SoundManager.instance.SetVolumeSliders(sliderMusicVolume, sliderVFXVolume);
-        StartCoroutine(PlayBackGroundMusic());
+       
     }
     IEnumerator PlayBackGroundMusic()
     {
