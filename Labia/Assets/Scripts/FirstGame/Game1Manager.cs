@@ -21,15 +21,8 @@ public class Game1Manager : MonoBehaviour
     AudioClip audioSource2;
     AudioClip audioSource3;
 
-    [SerializeField] GameObject Option1;
-    [SerializeField] GameObject Option2;
-    [SerializeField] GameObject Option3;
-
     [SerializeField] int _positionInGameLevel;
 
-    Button[] option1;
-    Button[] option2;
-    Button[] option3;
 
     [Range(0, 1)]
     [SerializeField] float _buttonTransparancy;
@@ -40,7 +33,8 @@ public class Game1Manager : MonoBehaviour
 
     [SerializeField] Slider sliderVFXVolume;
     [SerializeField] Slider sliderMusicVolume;
-
+    
+    public static Game1Manager instance;
 
     [SerializeField] Image image;
     [SerializeField] float timer;
@@ -48,17 +42,23 @@ public class Game1Manager : MonoBehaviour
     [SerializeField] List<GameObject> uiElemenst;
     bool fadeBlack = false;
 
-
-
     private void Awake()
     {
-        UpdateUI();
-         option1 = Option1.GetComponentsInChildren<Button>();
-         option2 = Option2.GetComponentsInChildren<Button>();
-         option3 = Option3.GetComponentsInChildren<Button>();
+        if (instance != null && instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(this);
+
+        }
+
     }
     private void Update()
     {
+        UpdateUI();
         LoadnewScene();
     }
     IEnumerator PlayBackGroundMusic()
@@ -80,7 +80,7 @@ public class Game1Manager : MonoBehaviour
 
         _uiManager.InfoOnScrene(audioSource1, audioSource2, audioSource3);
 
-        if(positionInLevel.LvlVideo != null)
+        if (positionInLevel.LvlVideo != null)
         {
             _display.texture = _renderTexture;
             _videoPlayer.clip = positionInLevel.LvlVideo;
@@ -100,48 +100,44 @@ public class Game1Manager : MonoBehaviour
       
         if (_gameLevel[_positionInGameLevel].Choice1CheckIfCorrect1 == true && _uiManager.BoxIsChecked1 == true)
         {
-            NextLevel();
+            _uiManager.CheckButton1.GetComponent<Image>().sprite = _uiManager.CheckCorrectSprite;
+            StartCoroutine(WaitToCheck());
         }
       else if(_gameLevel[_positionInGameLevel].Choice1CheckIfCorrect1 == false && _uiManager.BoxIsChecked1 == true)
         {
-           
-            foreach (var item in option1)
-            {
-                item.image.color = new Color(255, 255, 255, _buttonTransparancy);
 
-            }
+            _uiManager.CheckButton1.GetComponent<Image>().sprite = _uiManager.CheckWrongSprite;
         }
        
         if (_gameLevel[_positionInGameLevel].Choice1CheckIfCorrect2 == true && _uiManager.BoxIsChecked2 == true)
         {
-            NextLevel();
+            _uiManager.CheckButton2.GetComponent<Image>().sprite = _uiManager.CheckCorrectSprite;
+            StartCoroutine(WaitToCheck());
         }
        else if (_gameLevel[_positionInGameLevel].Choice1CheckIfCorrect2 == false && _uiManager.BoxIsChecked2 == true)
         {
-           
-          
-            foreach (var item in option2)
-            {
-                item.image.color = new Color(255, 255, 255, _buttonTransparancy);
 
-            }
+            _uiManager.CheckButton2.GetComponent<Image>().sprite = _uiManager.CheckWrongSprite;
         }
         if (_gameLevel[_positionInGameLevel].Choice1CheckIfCorrect3 == true && _uiManager.BoxIsChecked3 == true)
         {
-            NextLevel();
+            _uiManager.CheckButton3.GetComponent<Image>().sprite = _uiManager.CheckCorrectSprite;
+
+            StartCoroutine(WaitToCheck());
         }
         else if (_gameLevel[_positionInGameLevel].Choice1CheckIfCorrect3 == false && _uiManager.BoxIsChecked3 == true)
         {
 
-
-            foreach (var item in option3)
-            {
-                item.image.color = new Color(255, 255, 255, _buttonTransparancy);
-
-            }
+            _uiManager.CheckButton3.GetComponent<Image>().sprite = _uiManager.CheckWrongSprite;
         }
     }
 
+    IEnumerator WaitToCheck()
+    {
+        yield return new WaitForSeconds(2);
+        NextLevel();
+
+    }
     void NextLevel()
     {
 
@@ -153,19 +149,9 @@ public class Game1Manager : MonoBehaviour
             return;
         }
         UpdateUI();
-
-        foreach (var item in option1)
-        {
-            item.image.color = new Color(255, 255, 255, 1);
-        }
-        foreach (var item in option2)
-        {
-            item.image.color = new Color(255, 255, 255, 1);
-        }
-        foreach (var item in option3)
-        {
-            item.image.color = new Color(255, 255, 255, 1);
-        }
+        _uiManager.CheckButton1.GetComponent<Image>().sprite = _uiManager.BlancSprite; 
+        _uiManager.CheckButton2.GetComponent<Image>().sprite = _uiManager.BlancSprite; 
+        _uiManager.CheckButton3.GetComponent<Image>().sprite = _uiManager.BlancSprite;
     }
     IEnumerator ChangeScene()
     {
