@@ -56,7 +56,7 @@ public class SoundManager : MonoBehaviour
             vFXAudioSource.clip = audioClip;
             vFXAudioSource.volume = currentVFXVolume;
             vFXAudioSource.Play();
-            Destroy(audioSourceGameObject, vFXAudioSource.clip.length);
+          //  Destroy(audioSourceGameObject, vFXAudioSource.clip.length);
 
         }
     } 
@@ -69,7 +69,7 @@ public class SoundManager : MonoBehaviour
             clipAudioSource.clip = audioClip;
             clipAudioSource.volume = currentVFXVolume;
             clipAudioSource.Play();
-            Destroy(audioSourceGameObject, clipAudioSource.clip.length);
+            //Destroy(audioSourceGameObject, clipAudioSource.clip.length);
 
         }
     }
