@@ -19,6 +19,7 @@ public class SoundManager : MonoBehaviour
 
     public Slider SliderVFXVolume { get => sliderVFXVolume;}
     public Slider SliderMusicVolume { get => sliderMusicVolume;}
+    public AudioSource MusicAudioSource { get => musicAudioSource; set => musicAudioSource = value; }
 
     private void Awake()
     {
@@ -39,7 +40,7 @@ public class SoundManager : MonoBehaviour
         {
             currentMusicVolume = SliderMusicVolume.value;
             currentVFXVolume = SliderVFXVolume.value;
-            musicAudioSource.volume=currentMusicVolume;
+            MusicAudioSource.volume=currentMusicVolume;
         }
     }
     public void SetVolumeSliders(Slider volumeMusicSlider,Slider volumeVFXSlider)
@@ -49,16 +50,15 @@ public class SoundManager : MonoBehaviour
     }
     public void PlayVFXSound(AudioClip audioClip)
     {
-        if(!vFXAudioSource)
-        {
+       
             GameObject audioSourceGameObject = Instantiate(audioSourcePrefab);
             vFXAudioSource = audioSourceGameObject.GetComponent<AudioSource>();
             vFXAudioSource.clip = audioClip;
             vFXAudioSource.volume = currentVFXVolume;
             vFXAudioSource.Play();
-          //  Destroy(audioSourceGameObject, vFXAudioSource.clip.length);
+            Destroy(audioSourceGameObject, vFXAudioSource.clip.length);
 
-        }
+        
     } 
     public void PlayAudioClipSounds(AudioClip audioClip)
     {
@@ -69,18 +69,22 @@ public class SoundManager : MonoBehaviour
             clipAudioSource.clip = audioClip;
             clipAudioSource.volume = currentVFXVolume;
             clipAudioSource.Play();
-            //Destroy(audioSourceGameObject, clipAudioSource.clip.length);
+            Destroy(audioSourceGameObject, clipAudioSource.clip.length);
 
         }
     }
-    public void PlayBackGroundMusic(AudioClip audioClip)
+    public void PlayBackGroundMusic(AudioClip audioClip, bool destroy)
     {
         GameObject audioSourceGameObject = Instantiate(audioSourcePrefab);
-        musicAudioSource = audioSourceGameObject.GetComponent<AudioSource>();
-        musicAudioSource.clip = audioClip;
-        musicAudioSource.volume = currentVFXVolume;
-        musicAudioSource.loop = true;
-        musicAudioSource.Play();
+        MusicAudioSource = audioSourceGameObject.GetComponent<AudioSource>();
+        MusicAudioSource.clip = audioClip;
+        MusicAudioSource.volume = currentVFXVolume;
+        MusicAudioSource.loop = true;
+        MusicAudioSource.Play();
+        if(destroy)
+        {
+            Destroy(audioSourceGameObject, MusicAudioSource.clip.length);
+        }
 
     }
 }
