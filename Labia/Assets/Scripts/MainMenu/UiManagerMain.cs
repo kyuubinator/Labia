@@ -34,6 +34,7 @@ public class UiManagerMain : MonoBehaviour
     [SerializeField] List<GameObject> uiElemenst;
     bool fadeBlack = false;
 
+    bool cantPause;
     private void Start()
     {
         if(SoundManager.instance.SliderMusicVolume)
@@ -60,20 +61,31 @@ public class UiManagerMain : MonoBehaviour
 
     public void PauseMenuSwap(bool value)
     {
-        if (value == false)
+        if (!cantPause)
         {
-            StartCoroutine(PauseAnimation());
+            if (value == false)
+            {
+                StartCoroutine(PauseAnimation());
+            }
+            else
+            {
+                pauseMenu.SetActive(true);
+            }
+            //SoundManager.instance.PlayVFXSound(openPauseMenu[Random.Range(0, openPauseMenu.Length)]);
+            if (value)
+            {
+                animMain.SetTrigger("ClickPause");
+                animGame.SetTrigger("ClickPause");
+            }
+            StartCoroutine(DelayPause());
         }
-        else
-        {
-            pauseMenu.SetActive(true);
-        }
-        SoundManager.instance.PlayVFXSound(openPauseMenu[Random.Range(0, openPauseMenu.Length)]);
-        if (value) 
-        {
-            animMain.SetTrigger("ClickPause");
-            animGame.SetTrigger("ClickPause");
-        }
+    }
+
+    IEnumerator DelayPause()
+    {
+        cantPause = true;
+        yield return new WaitForSeconds(0.7f);
+        cantPause = false;
     }
 
     IEnumerator PauseAnimation()
