@@ -2,7 +2,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UiManagerMain : MonoBehaviour
@@ -25,6 +27,14 @@ public class UiManagerMain : MonoBehaviour
     [SerializeField] Slider sliderVFXVolume;
     [SerializeField] Slider sliderMusicVolume;
 
+
+    [SerializeField] Image image;
+    [SerializeField] float timer;
+    [SerializeField] bool startTimer = false;
+    [SerializeField] List<GameObject> uiElemenst;
+    bool fadeBlack = false;
+
+    bool cantPause;
     private void Start()
     {
         if(SoundManager.instance.SliderMusicVolume)
@@ -33,8 +43,12 @@ public class UiManagerMain : MonoBehaviour
             sliderMusicVolume.value = SoundManager.instance.SliderMusicVolume.value;
 
         }
-        SoundManager.instance.PlayBackGroundMusic(backGroundMusic);
+        SoundManager.instance.PlayBackGroundMusic(backGroundMusic,false);
         SoundManager.instance.SetVolumeSliders(sliderMusicVolume, sliderVFXVolume);
+    }
+    private void Update()
+    {
+        LoadnewScene();
     }
 
     public void MainMenuSwap(bool value)
@@ -47,20 +61,31 @@ public class UiManagerMain : MonoBehaviour
 
     public void PauseMenuSwap(bool value)
     {
-        if (value == false)
+        if (!cantPause)
         {
-            StartCoroutine(PauseAnimation());
+            if (value == false)
+            {
+                StartCoroutine(PauseAnimation());
+            }
+            else
+            {
+                pauseMenu.SetActive(true);
+            }
+            //SoundManager.instance.PlayVFXSound(openPauseMenu[Random.Range(0, openPauseMenu.Length)]);
+            if (value)
+            {
+                animMain.SetTrigger("ClickPause");
+                animGame.SetTrigger("ClickPause");
+            }
+            StartCoroutine(DelayPause());
         }
-        else
-        {
-            pauseMenu.SetActive(true);
-        }
-        //SoundManager.instance.PlayVFXSound(openPauseMenu[Random.Range(0, openPauseMenu.Length)]);
-        if (value) 
-        {
-            animMain.SetTrigger("ClickPause");
-            animGame.SetTrigger("ClickPause");
-        }
+    }
+
+    IEnumerator DelayPause()
+    {
+        cantPause = true;
+        yield return new WaitForSeconds(0.7f);
+        cantPause = false;
     }
 
     IEnumerator PauseAnimation()
@@ -107,8 +132,10 @@ public class UiManagerMain : MonoBehaviour
     IEnumerator DelayGameMode(int value)
     {
         SoundManager.instance.PlayVFXSound(buttonClickClip[Random.Range(0, buttonClickClip.Length)]);
-        yield return new WaitForSeconds(0.5f);
-        gameSelected[value].SetActive(true);
+
+        /////////////////////////////////////////////////
+        StartCoroutine(ChangeScene(value));
+        yield return null;
     }
 
     public void GameChoice1(bool value)
@@ -121,5 +148,78 @@ public class UiManagerMain : MonoBehaviour
         {
             animGame.SetTrigger("ClickGame2");
         }
+    }
+    void LoadnewScene()
+    {
+        if (startTimer)
+        {
+            timer += Time.deltaTime;
+            if (fadeBlack)
+            {
+                image.color = new Color(0f, 0f, 0f, Mathf.Lerp(0f, 1f, timer / 1));
+
+                if (image.color.a == 1)
+                {
+                    startTimer = false;
+                    timer = 0f;
+                }
+            }
+            else
+            {
+                image.color = new Color(0f, 0f, 0f, Mathf.Lerp(1f, 0f, timer / 1));
+                if (image.color.a == 0)
+                {
+                    startTimer = false;
+                    timer = 0f;
+                }
+            }
+
+        }
+    }
+    IEnumerator ChangeScene(int value)
+    {
+
+        startTimer = true;
+        fadeBlack = true;
+        Debug.Log("1");
+        string sceneName = SceneManager.GetActiveScene().name;
+        Destroy(SoundManager.instance.MusicAudioSource.clip=null);
+
+
+        if (value==0)
+        {
+            var a = SceneManager.LoadSceneAsync("FirstGame", LoadSceneMode.Additive);
+            yield return new WaitUntil(() => a.progress >= 0.9f);
+        }
+        else
+        {
+            var a = SceneManager.LoadSceneAsync("FASD", LoadSceneMode.Additive);
+            yield return new WaitUntil(() => a.progress >= 0.9f);
+            
+        }
+        
+
+        yield return new WaitForSeconds(1.5f);
+        for (int i = 0; i < uiElemenst.Count; i++)
+        {
+            uiElemenst[i].SetActive(false);
+        }
+        startTimer = true;
+        fadeBlack = false;
+        yield return new WaitForSeconds(1);
+        if (value == 0)
+        {
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName("FirstGame"));
+            SceneManager.UnloadSceneAsync(sceneName);
+        }
+        else
+        {
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName("FASD"));
+
+            SceneManager.UnloadSceneAsync(sceneName);
+
+
+        }
+
     }
 }
