@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class SoundManager : MonoBehaviour
 {
@@ -10,16 +12,21 @@ public class SoundManager : MonoBehaviour
     [SerializeField] Slider sliderVFXVolume;
     [SerializeField] Slider sliderMusicVolume;
 
-    AudioSource musicAudioSource;
-    AudioSource vFXAudioSource;
-    AudioSource clipAudioSource;
+    [SerializeField] AudioSource musicAudioSource;
+    [SerializeField] AudioSource vFXAudioSource;
+    [SerializeField] AudioSource clipAudioSource;
+    [SerializeField] VideoPlayer vPlayer;
 
-    float currentVFXVolume = 1;
-    float currentMusicVolume = 1;
+    [SerializeField] float currentVFXVolume = 1;
+    [SerializeField] float currentMusicVolume = 1;
 
     public Slider SliderVFXVolume { get => sliderVFXVolume;}
     public Slider SliderMusicVolume { get => sliderMusicVolume;}
     public AudioSource MusicAudioSource { get => musicAudioSource; set => musicAudioSource = value; }
+    public AudioSource ClipAudioSource { get => clipAudioSource; set => clipAudioSource = value; }
+    public float CurrentVFXVolume { get => currentVFXVolume; set => currentVFXVolume = value; }
+    public float CurrentMusicVolume { get => currentMusicVolume; set => currentMusicVolume = value; }
+    public VideoPlayer VPlayer { get => vPlayer; set => vPlayer = value; }
 
     private void Awake()
     {
@@ -38,9 +45,17 @@ public class SoundManager : MonoBehaviour
     {
         if (SliderVFXVolume && SliderMusicVolume)
         {
-            currentMusicVolume = SliderMusicVolume.value;
-            currentVFXVolume = SliderVFXVolume.value;
-            MusicAudioSource.volume=currentMusicVolume;
+            CurrentMusicVolume = SliderMusicVolume.value;
+            CurrentVFXVolume = SliderVFXVolume.value;
+            if(MusicAudioSource!=null)
+            {
+               
+                MusicAudioSource.volume=CurrentMusicVolume;
+            }
+            if(VPlayer!=null)
+            {
+                VPlayer.SetDirectAudioVolume(0,currentVFXVolume);
+            }
         }
     }
     public void SetVolumeSliders(Slider volumeMusicSlider,Slider volumeVFXSlider)
@@ -54,7 +69,7 @@ public class SoundManager : MonoBehaviour
             GameObject audioSourceGameObject = Instantiate(audioSourcePrefab);
             vFXAudioSource = audioSourceGameObject.GetComponent<AudioSource>();
             vFXAudioSource.clip = audioClip;
-            vFXAudioSource.volume = currentVFXVolume;
+            vFXAudioSource.volume = CurrentVFXVolume;
             vFXAudioSource.Play();
             Destroy(audioSourceGameObject, vFXAudioSource.clip.length);
 
@@ -62,14 +77,14 @@ public class SoundManager : MonoBehaviour
     } 
     public void PlayAudioClipSounds(AudioClip audioClip)
     {
-        if(!clipAudioSource)
+        if(!ClipAudioSource)
         {
             GameObject audioSourceGameObject = Instantiate(audioSourcePrefab);
-            clipAudioSource = audioSourceGameObject.GetComponent<AudioSource>();
-            clipAudioSource.clip = audioClip;
-            clipAudioSource.volume = currentVFXVolume;
-            clipAudioSource.Play();
-            Destroy(audioSourceGameObject, clipAudioSource.clip.length);
+            ClipAudioSource = audioSourceGameObject.GetComponent<AudioSource>();
+            ClipAudioSource.clip = audioClip;
+            ClipAudioSource.volume = CurrentVFXVolume;
+            ClipAudioSource.Play();
+            Destroy(audioSourceGameObject, ClipAudioSource.clip.length);
 
         }
     }
@@ -78,13 +93,14 @@ public class SoundManager : MonoBehaviour
         GameObject audioSourceGameObject = Instantiate(audioSourcePrefab);
         MusicAudioSource = audioSourceGameObject.GetComponent<AudioSource>();
         MusicAudioSource.clip = audioClip;
-        MusicAudioSource.volume = currentVFXVolume;
+        MusicAudioSource.volume = CurrentVFXVolume;
         MusicAudioSource.loop = true;
         MusicAudioSource.Play();
-        if(destroy)
+        if (destroy)
         {
             Destroy(audioSourceGameObject, MusicAudioSource.clip.length);
         }
-
     }
+ 
+
 }

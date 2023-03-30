@@ -32,19 +32,39 @@ public class UiManagerMain : MonoBehaviour
     [SerializeField] float timer;
     [SerializeField] bool startTimer = false;
     [SerializeField] List<GameObject> uiElemenst;
+    [SerializeField] Canvas canvas;
     bool fadeBlack = false;
 
     bool cantPause;
+
+  
+
     private void Start()
     {
-        if(SoundManager.instance.SliderMusicVolume)
+       
+        StartCoroutine(PlayMusic());
+        
+    }
+    IEnumerator PlayMusic()
+    {
+        yield return new WaitUntil(() => SceneManager.sceneCount == 1);
+       
+        if (SceneManager.GetActiveScene().name!="FirstGame"&& SceneManager.GetActiveScene().name != "SecondGame")
         {
-            sliderVFXVolume.value = SoundManager.instance.SliderVFXVolume.value;
-            sliderMusicVolume.value = SoundManager.instance.SliderMusicVolume.value;
+            
+            SoundManager.instance.SetVolumeSliders(sliderMusicVolume, sliderVFXVolume);
+            if (SoundManager.instance.SliderMusicVolume)
+            {
+                sliderVFXVolume.value = SoundManager.instance.CurrentVFXVolume;
+                sliderMusicVolume.value = SoundManager.instance.CurrentMusicVolume;
 
+            }
+            SoundManager.instance.PlayBackGroundMusic(backGroundMusic, false);
         }
-        SoundManager.instance.PlayBackGroundMusic(backGroundMusic,false);
-        SoundManager.instance.SetVolumeSliders(sliderMusicVolume, sliderVFXVolume);
+        
+
+           
+
     }
     private void Update()
     {
@@ -71,13 +91,20 @@ public class UiManagerMain : MonoBehaviour
             {
                 pauseMenu.SetActive(true);
             }
-            //SoundManager.instance.PlayVFXSound(openPauseMenu[Random.Range(0, openPauseMenu.Length)]);
+            SoundManager.instance.PlayVFXSound(openPauseMenu[Random.Range(0, openPauseMenu.Length)]);
             if (value)
             {
-                animMain.SetTrigger("ClickPause");
-                animGame.SetTrigger("ClickPause");
+
+                if(animMain!=null)
+                {
+                    animMain?.SetTrigger("ClickPause");
+
+                    animGame?.SetTrigger("ClickPause");
+
+                }
             }
             StartCoroutine(DelayPause());
+
         }
     }
 
@@ -111,8 +138,7 @@ public class UiManagerMain : MonoBehaviour
 
     public void TutorialButton()
     {
-        SoundManager.instance.PlayVFXSound(buttonClickClip[Random.Range(0, buttonClickClip.Length)]);
-        //tutorial.Play();
+       // SoundManager.instance.PlayVFXSound(buttonClickClip[Random.Range(0, buttonClickClip.Length)]);
         animMain.SetTrigger("ClickTutorial");
         animGame.SetTrigger("ClickTutorial");
     }
@@ -123,17 +149,13 @@ public class UiManagerMain : MonoBehaviour
         pauseMenu?.SetActive(false);
         gameChoiceMenu?.SetActive(false);
     }
-
     public void GameSelected(int value)
     {
         StartCoroutine(DelayGameMode(value));
     }
-
     IEnumerator DelayGameMode(int value)
     {
         SoundManager.instance.PlayVFXSound(buttonClickClip[Random.Range(0, buttonClickClip.Length)]);
-
-        /////////////////////////////////////////////////
         StartCoroutine(ChangeScene(value));
         yield return null;
     }
@@ -149,6 +171,7 @@ public class UiManagerMain : MonoBehaviour
             animGame.SetTrigger("ClickGame2");
         }
     }
+    
     void LoadnewScene()
     {
         if (startTimer)
@@ -173,19 +196,15 @@ public class UiManagerMain : MonoBehaviour
                     timer = 0f;
                 }
             }
-
         }
     }
     IEnumerator ChangeScene(int value)
     {
-
         startTimer = true;
         fadeBlack = true;
         Debug.Log("1");
         string sceneName = SceneManager.GetActiveScene().name;
         Destroy(SoundManager.instance.MusicAudioSource.clip=null);
-
-
         if (value==0)
         {
             var a = SceneManager.LoadSceneAsync("FirstGame", LoadSceneMode.Additive);
@@ -193,12 +212,9 @@ public class UiManagerMain : MonoBehaviour
         }
         else
         {
-            var a = SceneManager.LoadSceneAsync("FASD", LoadSceneMode.Additive);
-            yield return new WaitUntil(() => a.progress >= 0.9f);
-            
+            var a = SceneManager.LoadSceneAsync("SecondGame", LoadSceneMode.Additive);
+            yield return new WaitUntil(() => a.progress >= 0.9f);           
         }
-        
-
         yield return new WaitForSeconds(1.5f);
         for (int i = 0; i < uiElemenst.Count; i++)
         {
@@ -214,12 +230,8 @@ public class UiManagerMain : MonoBehaviour
         }
         else
         {
-            SceneManager.SetActiveScene(SceneManager.GetSceneByName("FASD"));
-
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName("SecondGame"));
             SceneManager.UnloadSceneAsync(sceneName);
-
-
         }
-
     }
 }

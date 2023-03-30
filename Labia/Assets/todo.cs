@@ -3,14 +3,10 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class todo : MonoBehaviour
 {
-//    confetti quando acertas
-//    quando confirma, não selecionar outros buttons
-//os videos nao serem linears
-//meter os buttons um bocado faded quando errados
-//sfx quando erras/acertas
-//trocar o background
-//colocar os sons nos scriptable objects
+    //Entrar e sair muito rapido da scene = bug
+    //Fade in do som
 }

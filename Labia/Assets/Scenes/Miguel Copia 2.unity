@@ -557,7 +557,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 1064268627}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -566,7 +566,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 1
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: -2
   m_TargetDisplay: 0
 --- !u!224 &168626234
 RectTransform:
@@ -1851,13 +1851,13 @@ MonoBehaviour:
   animPause: {fileID: 205704645}
   animGame: {fileID: 1982781305}
   buttonClickClip:
-  - {fileID: 8300000, guid: 085ccd5d91a0ed84e92193251a38bd84, type: 3}
-  - {fileID: 8300000, guid: 160618f209ff39047bd89354a520387a, type: 3}
+  - {fileID: 8300000, guid: ca779c993e45a014ab0c86d1aedf7157, type: 3}
+  - {fileID: 8300000, guid: 307c6651b82860448826c58ea52d989c, type: 3}
   openPauseMenu:
   - {fileID: 8300000, guid: 0139eedf01a7ef54185ad3ee226f9c4c, type: 3}
   - {fileID: 8300000, guid: d4bf3bc0043461340b0e8a160f550b5a, type: 3}
   backGroundMusic: {fileID: 8300000, guid: 79c4cb50433799540b4acaf4c3d0e460, type: 3}
-  sliderVFXVolume: {fileID: 1428688092}
+  sliderVFXVolume: {fileID: 1295863487}
   sliderMusicVolume: {fileID: 1428688092}
   image: {fileID: 1307626687}
   timer: 0
@@ -3657,6 +3657,11 @@ MonoBehaviour:
   audioSourcePrefab: {fileID: 1155556543345598159, guid: aa0daf7cf5a185f49bc3b9fadae1436e, type: 3}
   sliderVFXVolume: {fileID: 1295863487}
   sliderMusicVolume: {fileID: 1428688092}
+  musicAudioSource: {fileID: 0}
+  vFXAudioSource: {fileID: 0}
+  clipAudioSource: {fileID: 0}
+  currentVFXVolume: 1
+  currentMusicVolume: 1
 --- !u!4 &2022199010
 Transform:
   m_ObjectHideFlags: 0
