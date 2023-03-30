@@ -44,13 +44,27 @@ public class UiManagerMain : MonoBehaviour
 
     public void PauseMenuSwap(bool value)
     {
-        pauseMenu.SetActive(value);
+        if (value == false)
+        {
+            StartCoroutine(PauseAnimation());
+        }
+        else
+        {
+            pauseMenu.SetActive(true);
+        }
         //SoundManager.instance.PlayVFXSound(openPauseMenu[Random.Range(0, openPauseMenu.Length)]);
         if (value) 
         {
             animMain.SetTrigger("ClickPause");
             animGame.SetTrigger("ClickPause");
         }
+    }
+
+    IEnumerator PauseAnimation()
+    {
+        animPause.SetTrigger("ClosePause");
+        yield return new WaitForSeconds(0.66f);
+        pauseMenu.SetActive(false);
     }
 
     public void GameChoiceMenuSwap(bool value)
