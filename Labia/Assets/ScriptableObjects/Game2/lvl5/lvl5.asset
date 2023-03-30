@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74f5c98a0e7e48449a1a7cc020586a1a, type: 3}
   m_Name: lvl5
   m_EditorClassIdentifier: 
-  _audioButton1: {fileID: 0}
-  _audioButton2: {fileID: 0}
-  _audioButton3: {fileID: 0}
-  _choice1CheckIfCorrect1: 1
-  _choice1CheckIfCorrect2: 0
+  _audioButton1: {fileID: 8300000, guid: 6b4c5072f19a5f941ab3032fc185deef, type: 3}
+  _audioButton2: {fileID: 8300000, guid: 56220254460f7174c963e80e3db06451, type: 3}
+  _audioButton3: {fileID: 8300000, guid: b3a9e8c20ffdbd845a5ae10182faef43, type: 3}
+  _choice1CheckIfCorrect1: 0
+  _choice1CheckIfCorrect2: 1
   _choice1CheckIfCorrect3: 0
   _lvlVideo: {fileID: 32900000, guid: 8f5025468eab88549a2b80b1d757e994, type: 3}
   _lvlImage: {fileID: 0}

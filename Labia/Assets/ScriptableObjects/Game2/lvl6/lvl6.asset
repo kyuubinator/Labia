@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74f5c98a0e7e48449a1a7cc020586a1a, type: 3}
   m_Name: lvl6
   m_EditorClassIdentifier: 
-  _audioButton1: {fileID: 0}
-  _audioButton2: {fileID: 0}
-  _audioButton3: {fileID: 0}
+  _audioButton1: {fileID: 8300000, guid: 2158086384dda3c478c38e0ccf68c7e1, type: 3}
+  _audioButton2: {fileID: 8300000, guid: 0c042e53b1edae74c9f04b356a9c2a4f, type: 3}
+  _audioButton3: {fileID: 8300000, guid: f7e24054c41e7f943a638c336951b788, type: 3}
   _choice1CheckIfCorrect1: 1
   _choice1CheckIfCorrect2: 0
   _choice1CheckIfCorrect3: 0
