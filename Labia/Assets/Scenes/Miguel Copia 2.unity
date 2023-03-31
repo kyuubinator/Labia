@@ -1695,7 +1695,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1010674092
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1865,6 +1865,7 @@ MonoBehaviour:
   uiElemenst:
   - {fileID: 1982781303}
   - {fileID: 707959217}
+  canvas: {fileID: 0}
 --- !u!4 &1020791567
 Transform:
   m_ObjectHideFlags: 0
@@ -3660,6 +3661,7 @@ MonoBehaviour:
   musicAudioSource: {fileID: 0}
   vFXAudioSource: {fileID: 0}
   clipAudioSource: {fileID: 0}
+  vPlayer: {fileID: 0}
   currentVFXVolume: 1
   currentMusicVolume: 1
 --- !u!4 &2022199010

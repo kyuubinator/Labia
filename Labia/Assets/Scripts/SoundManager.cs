@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +18,8 @@ public class SoundManager : MonoBehaviour
     [SerializeField] AudioSource clipAudioSource;
     [SerializeField] VideoPlayer vPlayer;
 
+    bool startFadeinMusic;
+    float timer;
     [SerializeField] float currentVFXVolume = 1;
     [SerializeField] float currentMusicVolume = 1;
 
@@ -57,7 +60,36 @@ public class SoundManager : MonoBehaviour
                 VPlayer.SetDirectAudioVolume(0,currentVFXVolume);
             }
         }
+
+       
     }
+    //public void StartMusicFade (float targetValue)
+    //{
+    //    StartCoroutine(FadeInAndOutMusic( targetValue));
+    //}
+    //IEnumerator FadeInAndOutMusic( float targetValue)
+    //{
+    //    //float timePassed = 0;
+    //    //float initialVolume= currentMusicVolume;
+    //    //float t = musicAudioSource.volume;
+    //    //while (timePassed < 1)
+    //    //{
+    //    //    timePassed += Time.deltaTime;
+    //    //    currentMusicVolume = Mathf.Lerp(t, 0, 1/timePassed);
+    //    //    yield return null;
+    //    //}
+    //    //yield return new WaitForSeconds(1.5f);
+    //    //timePassed = 0;
+    //    //while (timePassed < 1)
+    //    //{
+    //    //    timePassed += Time.deltaTime;
+    //    //    currentMusicVolume = Mathf.Lerp(musicAudioSource.volume, initialVolume, 1f / timePassed);
+
+    //    //    yield return null;
+    //    //}
+
+
+    //}
     public void SetVolumeSliders(Slider volumeMusicSlider,Slider volumeVFXSlider)
     {
         sliderVFXVolume = volumeVFXSlider;

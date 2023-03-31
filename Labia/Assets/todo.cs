@@ -7,6 +7,5 @@ using static UnityEngine.EventSystems.EventTrigger;
 
 public class todo : MonoBehaviour
 {
-    //Entrar e sair muito rapido da scene = bug
     //Fade in do som
 }
