@@ -205,6 +205,7 @@ public class UiManagerMain : MonoBehaviour
         Debug.Log("1");
         string sceneName = SceneManager.GetActiveScene().name;
         Destroy(SoundManager.instance.MusicAudioSource.clip=null);
+        //SoundManager.instance.StartMusicFade(0f);
         if (value==0)
         {
             var a = SceneManager.LoadSceneAsync("FirstGame", LoadSceneMode.Additive);
